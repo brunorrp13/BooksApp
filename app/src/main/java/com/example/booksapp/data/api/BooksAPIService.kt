@@ -7,11 +7,11 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface BooksAPIService {
-  @GET("/books/v1/volumes")
-  suspend fun getBooks(
-      @Query("q")
-      isbn:String,
-      @Query("apiKey")
-      apiKey:String = BuildConfig.API_KEY
-  ): Response<APIResponse>
+    @GET("/books/v1/volumes")
+    suspend fun getBooks(
+        @Query("q")
+        isbn: String,
+        @Query("apiKey")
+        apiKey: String = BuildConfig.API_KEY
+    ): Response<APIResponse>
 }
