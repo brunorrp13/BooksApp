@@ -5,13 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/layout_background"
-    tools:context=".ui.FirstFragment">
-
-    <SearchView
-        android:id="@+id/svBooks"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/search_background" />
+    tools:context=".ui.BooksFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBooks"

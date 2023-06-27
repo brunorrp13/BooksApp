@@ -12,4 +12,9 @@
 
     <string name="books">Books</string>
     <string name="favorites">Favorite Books</string>
+    <string name="buy_book">Buy Book</string>
+    <string name="book_authors">Authors</string>
+    <string name="book_description">Description</string>
+    <string name="book_title">Book Title</string>
+    <string name="save_book">Save to Favorite</string>
 </resources>

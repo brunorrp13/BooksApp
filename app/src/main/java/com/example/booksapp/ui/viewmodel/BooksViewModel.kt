@@ -17,7 +17,6 @@ import java.lang.Exception
 class BooksViewModel(
     private val app: Application,
     private val getBooksUseCase: GetBooksUseCase,
-    private val getSearchedBooksUseCase: GetSearchedBooksUseCase,
     private val saveBooksUseCase: SaveBooksUseCase,
     private val getSavedBooksUseCase: GetSavedBooksUseCase,
     private val deleteSavedBooksUseCase: DeleteSavedBooksUseCase

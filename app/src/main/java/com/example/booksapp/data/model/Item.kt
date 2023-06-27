@@ -1,23 +1,24 @@
 package com.example.booksapp.data.model
 
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
+@Entity(
+    tableName = "books"
+)
 data class Item(
-    @SerializedName("accessInfo")
-    val accessInfo: AccessInfo,
-    @SerializedName("etag")
-    val etag: String,
+    @PrimaryKey()
     @SerializedName("id")
     val id: String,
+    @SerializedName("etag")
+    val etag: String,
     @SerializedName("kind")
     val kind: String,
-    @SerializedName("saleInfo")
-    val saleInfo: SaleInfo,
-    @SerializedName("searchInfo")
-    val searchInfo: SearchInfo,
     @SerializedName("selfLink")
     val selfLink: String,
     @SerializedName("volumeInfo")
     val volumeInfo: VolumeInfo
-)
+): Serializable

@@ -35,7 +35,7 @@ class BooksRepositoryImpl(
         booksLocalDataSource.deleteBookFromDB(book)
     }
 
-    override fun getBooks(): Flow<List<Item>> {
+    override fun getSavedBooks(): Flow<List<Item>> {
         return booksLocalDataSource.getSavedBooks()
     }
 }
