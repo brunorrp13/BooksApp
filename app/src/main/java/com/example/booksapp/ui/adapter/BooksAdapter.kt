@@ -1,17 +1,26 @@
 package com.example.booksapp.ui.adapter
 
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.booksapp.R
 import com.example.booksapp.data.model.Item
 import com.example.booksapp.databinding.BookListItemBinding
 
-class BooksAdapter : RecyclerView.Adapter<BooksAdapter.BooksViewHolder>() {
+class BooksAdapter(private val fragmentType: FragmentType) :
+    RecyclerView.Adapter<BooksAdapter.BooksViewHolder>() {
 
+    enum class FragmentType {
+        FAVORITES,
+        BOOKS
+    }
 
     private val callback = object : DiffUtil.ItemCallback<Item>() {
         override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
@@ -50,6 +59,25 @@ class BooksAdapter : RecyclerView.Adapter<BooksAdapter.BooksViewHolder>() {
             binding.bookTitle.text = book.volumeInfo.title
             binding.bookAuthor.text = book.volumeInfo.authors.toString()
             binding.bookDescription.text = book.volumeInfo.description
+
+            Glide.with(binding.ivBookImage.context)
+                .load(book.volumeInfo.imageLinks.thumbnail)
+                .into(binding.ivBookImage)
+            if (!book.saleInfo.buyLink.isNullOrEmpty()) {
+                binding.buyBook.visibility = View.VISIBLE
+                binding.buyBook.setOnClickListener {
+                    val url = book.saleInfo.buyLink
+                    if (url.isNotEmpty()) {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(book.saleInfo.buyLink))
+                        it.context.startActivity(intent)
+                    }
+                }
+            }
+            if (fragmentType == FragmentType.FAVORITES) {
+                binding.icon.setImageResource(R.drawable.ic_baseline_delete_24)
+                binding.saveDeleteText.text = binding.root.context.getString(R.string.delete_book)
+
+            }
             binding.favoritesLayout.setOnClickListener {
                 onItemClickListener?.let {
                     it(book)

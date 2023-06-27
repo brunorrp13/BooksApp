@@ -35,7 +35,7 @@ class BooksFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as MainActivity).viewModel
-        booksAdapter = (activity as MainActivity).booksAdapter
+        booksAdapter = BooksAdapter(BooksAdapter.FragmentType.BOOKS)
         booksAdapter.setOnItemClickListener {
             viewModel.saveBook(it)
         }

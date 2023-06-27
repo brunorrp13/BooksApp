@@ -31,7 +31,10 @@ class FavoritesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel = (activity as MainActivity).viewModel
-        booksAdapter = (activity as MainActivity).booksAdapter
+        booksAdapter = BooksAdapter(BooksAdapter.FragmentType.FAVORITES)
+        booksAdapter.setOnItemClickListener {
+            viewModel.deleteBook(it)
+        }
         initRecyclerView()
         viewModel.getSavedBooks().observe(viewLifecycleOwner) {
             booksAdapter.differ.submitList(it)

@@ -17,4 +17,5 @@
     <string name="book_description">Description</string>
     <string name="book_title">Book Title</string>
     <string name="save_book">Save to Favorite</string>
+    <string name="delete_book">Delete Book</string>
 </resources>

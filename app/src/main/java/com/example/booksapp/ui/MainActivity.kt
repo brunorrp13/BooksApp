@@ -17,12 +17,9 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     @Inject
     lateinit var factory: BooksViewModelFactory
-    @Inject
-    lateinit var booksAdapter: BooksAdapter
     lateinit var viewModel: BooksViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
