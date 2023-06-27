@@ -40,7 +40,7 @@ class BooksFragment : Fragment() {
             viewModel.saveBook(it)
         }
         initRecyclerView()
-        viewNewsList()
+        viewBooksList()
     }
 
     private fun initRecyclerView() {
@@ -51,7 +51,7 @@ class BooksFragment : Fragment() {
         }
     }
 
-    private fun viewNewsList() {
+    private fun viewBooksList() {
 
         viewModel.getBooks("mobiledevelopment")
         viewModel.books.observe(viewLifecycleOwner) { response ->
